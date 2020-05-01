@@ -1,10 +1,11 @@
-/*create database punto_de_venta;*/
-drop database punto_De_venta;
 
-CREATE DATABASE punto_de_venta;
+DROP database IF EXISTS punto_de_venta_pauro;
+
+CREATE DATABASE punto_de_venta_pauro;
 
 
 /*USE punto_de_venta;	*/
+
 use punto_De_venta_pauro;
 
 CREATE TABLE clientes
@@ -296,13 +297,12 @@ DELIMITER ;
 /*------------------------------------------------------------------------*/
 
 
-
 /*---------------------------------------------------------------------------------*/
 DELIMITER $
-CREATE  FUNCTION sumarStock(id_articulo INTEGER, cantidad decimal) RETURNS decimal(10,2)
+CREATE  FUNCTION sumarStock(id_articulo INTEGER, cantidad decimal(10,2)) RETURNS decimal(10,2)
 BEGIN 
 
-DECLARE stock_inicial decimal;
+DECLARE stock_inicial decimal(10,2);
 
 /*SELECT detalle_productos.cantidad INTO cantidad_articulo_en_producto FROM detalle_productos, articulos, productos WHERE productos.id = detalle_productos.id_producto AND articulos.id = detalle_productos.id_articulo;*/
 
@@ -321,7 +321,7 @@ DELIMITER ;
 
 /*------------------------------------------------------------------------------------*/
 DELIMITER $
-CREATE  FUNCTION restarStockSinProducto(id_articulo INT, cantidad decimal) RETURNS decimal(10,2)
+CREATE  FUNCTION restarStockSinProducto(id_articulo INT, cantidad decimal(10,2)) RETURNS decimal(10,2)
 BEGIN 
 
 DECLARE stock_inicial decimal(10,2);
